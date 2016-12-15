@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DependencyInjectionTesting;
+﻿using System.Web.Mvc;
 using DependencyInjectionTesting.Controllers;
+using DependencyInjectionTesting.Data.DAI;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DependencyInjectionTesting.Tests.Controllers
 {
@@ -16,7 +12,7 @@ namespace DependencyInjectionTesting.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(new CachedSqlRepository());
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -29,20 +25,20 @@ namespace DependencyInjectionTesting.Tests.Controllers
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(new CachedSqlRepository());
 
             // Act
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Assert.AreEqual("Cached Sql Repository", result.ViewBag.Message);
         }
 
         [TestMethod]
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(new CachedSqlRepository());
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;

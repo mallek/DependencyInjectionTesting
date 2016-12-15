@@ -1,13 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.Composition;
 using System.Web.Mvc;
+using DependencyInjectionTesting.Data.Interfaces;
+using DependencyInjectionTesting.Models;
 
 namespace DependencyInjectionTesting.Controllers
 {
     public class HomeController : Controller
     {
+        [Import]
+        // [Import("Cached")]
+        private IReadOnlyRepository _repo;
+
+        public HomeController()
+        {
+            ObjectBase.Container.SatisfyImportsOnce(this);
+        }
+
+        public HomeController(IReadOnlyRepository repo)
+        {
+            _repo = repo;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -15,7 +28,7 @@ namespace DependencyInjectionTesting.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = _repo.Get();
 
             return View();
         }

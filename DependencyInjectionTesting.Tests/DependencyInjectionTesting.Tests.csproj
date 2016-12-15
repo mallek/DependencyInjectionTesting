@@ -92,6 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DependencyInjectionTesting.Data\DependencyInjectionTesting.Data.csproj">
+      <Project>{5ebc2262-e21b-4b7c-ab98-792ea20e232c}</Project>
+      <Name>DependencyInjectionTesting.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DependencyInjectionTesting\DependencyInjectionTesting.csproj">
       <Project>{614CD02F-F133-4FEA-B8D0-4762764F71CE}</Project>
       <Name>DependencyInjectionTesting</Name>
