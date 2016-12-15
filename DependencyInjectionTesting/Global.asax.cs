@@ -33,8 +33,8 @@ namespace DependencyInjectionTesting
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
 
             // Set up a controller factory using the DI container
-            //IControllerFactory mefControllerFactory = new MefControllerFactory(ObjectBase.Container);
-            //ControllerBuilder.Current.SetControllerFactory(mefControllerFactory);
+            IControllerFactory mefControllerFactory = new MefControllerFactory(ObjectBase.Container);
+            ControllerBuilder.Current.SetControllerFactory(mefControllerFactory);
         }
     }
 }

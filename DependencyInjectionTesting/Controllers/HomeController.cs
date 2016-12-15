@@ -1,22 +1,18 @@
 ﻿using System.ComponentModel.Composition;
 using System.Web.Mvc;
 using DependencyInjectionTesting.Data.Interfaces;
-using DependencyInjectionTesting.Models;
 
 namespace DependencyInjectionTesting.Controllers
 {
+    [Export]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class HomeController : Controller
     {
-        [Import]
-        // [Import("Cached")]
+
         private IReadOnlyRepository _repo;
 
-        public HomeController()
-        {
-            ObjectBase.Container.SatisfyImportsOnce(this);
-        }
-
-        public HomeController(IReadOnlyRepository repo)
+        [ImportingConstructor]
+        public HomeController([Import("Cached")]IReadOnlyRepository repo)
         {
             _repo = repo;
         }
