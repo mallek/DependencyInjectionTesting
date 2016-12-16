@@ -26,7 +26,7 @@ namespace DependencyInjectionTesting
             var partsCatalog = new List<ComposablePartCatalog>() { catalog };
 
             // Initialize the DI container
-            ObjectBase.Container = MEFLoader.Init(catalogParts: partsCatalog, useCaching: true);
+            ObjectBase.Container = MEFLoader.Init(partsCatalog);
 
             // Setup the DI resolver (MEF)
             var resolver = new MefDependencyResolver(ObjectBase.Container);

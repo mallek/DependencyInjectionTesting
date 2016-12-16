@@ -8,12 +8,12 @@ namespace DependencyInjectionTesting.Bootstrapper
     {
         //Dependancy Injection Container initialization, builds a catalog of interfaces to types
 
-        public static CompositionContainer Init(bool useCaching)
+        public static CompositionContainer Init()
         {
-            return Init(null, useCaching);
+            return Init(null);
         }
 
-        public static CompositionContainer Init(ICollection<ComposablePartCatalog> catalogParts, bool useCaching)
+        public static CompositionContainer Init(ICollection<ComposablePartCatalog> catalogParts)
         {
             AggregateCatalog catalog = new AggregateCatalog();
 

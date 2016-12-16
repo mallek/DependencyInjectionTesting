@@ -2,7 +2,6 @@
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Web.Mvc;
-using DependencyInjectionTesting.Extensions;
 
 namespace DependencyInjectionTesting
 {

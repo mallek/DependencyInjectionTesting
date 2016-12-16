@@ -36,6 +36,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -92,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DependencyInjectionTesting.Bootstrapper\DependencyInjectionTesting.Bootstrapper.csproj">
+      <Project>{06060E76-F8FB-4D2E-A870-6FEAED97D63A}</Project>
+      <Name>DependencyInjectionTesting.Bootstrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DependencyInjectionTesting.Data\DependencyInjectionTesting.Data.csproj">
       <Project>{5ebc2262-e21b-4b7c-ab98-792ea20e232c}</Project>
       <Name>DependencyInjectionTesting.Data</Name>
