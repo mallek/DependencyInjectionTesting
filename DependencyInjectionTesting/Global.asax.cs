@@ -21,6 +21,15 @@ namespace DependencyInjectionTesting
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            //Load Unity DI
+            AddUnityDependencyInjection();
+
+            //Load Mef DI
+            //    AddMEFDependencyInjection();
+        }
+
+        private static void AddMEFDependencyInjection()
+        {
             // Get the types for this assembly (Feeds.Web)
             var catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
             var partsCatalog = new List<ComposablePartCatalog>() { catalog };
@@ -35,6 +44,11 @@ namespace DependencyInjectionTesting
             // Set up a controller factory using the DI container
             IControllerFactory mefControllerFactory = new MefControllerFactory(ObjectBase.Container);
             ControllerBuilder.Current.SetControllerFactory(mefControllerFactory);
+        }
+
+        private static void AddUnityDependencyInjection()
+        {
+            UnityBootstrapper.Initialise();
         }
     }
 }

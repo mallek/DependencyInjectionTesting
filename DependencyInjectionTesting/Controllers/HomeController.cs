@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
 using System.Web.Mvc;
 using DependencyInjectionTesting.Data.Interfaces;
+using Microsoft.Practices.Unity;
 
 namespace DependencyInjectionTesting.Controllers
 {
@@ -12,7 +13,7 @@ namespace DependencyInjectionTesting.Controllers
         private IReadOnlyRepository _repo;
 
         [ImportingConstructor]
-        public HomeController([Import]IReadOnlyRepository repo)
+        public HomeController([Import("Cached")][Dependency("Cached")]IReadOnlyRepository repo)
         {
             _repo = repo;
         }
