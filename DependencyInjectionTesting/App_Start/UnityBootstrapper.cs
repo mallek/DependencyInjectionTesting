@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using DependencyInjectionTesting.Controllers;
 using DependencyInjectionTesting.Data.DAI;
 using DependencyInjectionTesting.Data.Interfaces;
 using Microsoft.Practices.Unity;
@@ -20,8 +21,16 @@ namespace DependencyInjectionTesting
 
             // register all your components with the container here  
             //This is the important line to edit  
+            container.RegisterType<IReadOnlyRepository, SQLRepository>();
             container.RegisterType<IReadOnlyRepository, SQLRepository>("Sql");
             container.RegisterType<IReadOnlyRepository, CachedSqlRepository>("Cached");
+
+            container.RegisterType<HomeController>(
+    new InjectionConstructor(                        // Explicitly specify a constructor
+        new ResolvedParameter<IReadOnlyRepository>("Cached") // Resolve parameter of type IRepository using name "Client"
+    )
+);
+
 
 
             RegisterTypes(container);

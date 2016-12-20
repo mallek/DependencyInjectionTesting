@@ -12,8 +12,7 @@ namespace DependencyInjectionTesting.Controllers
 
         private IReadOnlyRepository _repo;
 
-        [ImportingConstructor]
-        public HomeController([Import("Cached")][Dependency("Cached")]IReadOnlyRepository repo)
+        public HomeController(IReadOnlyRepository repo)
         {
             _repo = repo;
         }
