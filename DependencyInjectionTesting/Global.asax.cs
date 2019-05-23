@@ -22,10 +22,10 @@ namespace DependencyInjectionTesting
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //Load Unity DI
-            AddUnityDependencyInjection();
+            //AddUnityDependencyInjection();
 
             //Load Mef DI
-            //    AddMEFDependencyInjection();
+            AddMEFDependencyInjection();
         }
 
         private static void AddMEFDependencyInjection()

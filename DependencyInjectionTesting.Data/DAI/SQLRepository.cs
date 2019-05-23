@@ -3,7 +3,8 @@ using DependencyInjectionTesting.Data.Interfaces;
 
 namespace DependencyInjectionTesting.Data.DAI
 {
-    [Export(typeof(IReadOnlyRepository))]
+	[Export("Sql", typeof(IReadOnlyRepository))]
+	//[Export(typeof(IReadOnlyRepository))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class SQLRepository : IReadOnlyRepository
     {
